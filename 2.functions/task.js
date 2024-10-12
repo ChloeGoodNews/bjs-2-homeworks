@@ -159,8 +159,8 @@ function makeWork (arrOfArr, func) {
   for(let i = 0; i < arrOfArr.length; i++) {
     func(...arrOfArr[i]);
   }
-  const funcResult = func();
 
+  const funcResult  = [func()];
   let max = Math.max(...funcResult);
 
   if(max > maxWorkerResult) {
