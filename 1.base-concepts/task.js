@@ -5,8 +5,7 @@ function solveEquation(a, b, c) {
   let root;
   let rootSecond;
 
-  if(discriminant < 0){
-  } else if(discriminant === 0) {
+  if(discriminant === 0) {
     root = -b/(2*a);
     arr[0] = root;
   } else if(discriminant > 0) {
