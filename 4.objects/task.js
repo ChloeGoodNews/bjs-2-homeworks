@@ -4,11 +4,11 @@ function Student(name, gender, age) {
 	this.age = age;
 	this.marks = [];
 }
-let student1 = new Student("Elena", "female", 19);
+new Student("Elena", "female", 19);
 
-let student2 = new Student("Valentin", "male", 18);
+new Student("Valentin", "male", 18);
 
-let student3 = new Student("Teja", "female", 17);
+new Student("Teja", "female", 17);
 
 
 
