@@ -1,56 +1,45 @@
 ﻿function parseCount(number) {
-	if (Number.isNaN(Number.parseFloat(number))) {
+	let parsedNumber = Number.parseFloat(number);
+	if (Number.isNaN(parsedNumber)) {
 		throw new Error("Невалидное значение");
 	}
-	return parseFloat(number);
+	return parsedNumber;
 }
 
 function validateCount(number) {
 	try {
-		let result = parseCount(number);
-		return result;
+		return parseCount(number);
 	} catch (error) {
-		if (error instanceof Error) {
 			return error;
-		}
 	}
 }
 
 class Triangle {
-	constructor(hypotenuse, opposite, base) {
-		this.hypotenuse = hypotenuse;
-		this.opposite = opposite;
-		this.base = base;
+	constructor(ab, bc, ca) {
+		this.ab= ab;
+		this.bc = bc;
+		this.ca = ca;
 
-		if (this.opposite + this.base < this.hypotenuse || this.opposite + this.hypotenuse < this.base || this.base + this.hypotenuse < this.opposite) {
+		if (ab + bc < ca || bc + ca < ab || ab + ca < bc) {
 			throw new Error("Треугольник с такими сторонами не существует");
 		}
 	}
-	set perimeter(perimeter) {
-		this._perimeter = perimeter;
-	}
 
 	get perimeter() {
-		this.perimeter = this.opposite + this.base + this.hypotenuse;
-		return this._perimeter;
+		return this.ab + this.bc + this.ca;
+		
 	}
 
-	set area(area) {
-		this._area = area;
-	}
 	get area() {
-		this.semiperimeter = 0.5 * this.perimeter;
-		this.area = Math.sqrt(this.semiperimeter * (this.semiperimeter - this.hypotenuse) * (this.semiperimeter - this.opposite) * (this.semiperimeter - this.base));
-		return Number(this._area.toFixed(3));
+		let semiperimeter = 0.5 * (this.ab + this.bc + this.ca);
+		return Number(Math.sqrt(semiperimeter * (semiperimeter - this.ab) * (semiperimeter - this.bc) * (semiperimeter - this.ca)).toFixed(3));
 	}
 }
 
-function getTriangle(hypotenuse, opposite, base) {
+function getTriangle(ab, bc, ca) {
 	try {
-		const triangle = new Triangle(hypotenuse, opposite, base);
-		return triangle;
+		return new Triangle(ab, bc, ca);
 	} catch (error) {
-		if (error instanceof Error) {
 			return triangle = {
 				get perimeter() {
 					return "Ошибка! Треугольник не существует";
@@ -59,8 +48,5 @@ function getTriangle(hypotenuse, opposite, base) {
 					return "Ошибка! Треугольник не существует";
 				}
 			}
-
-		}
-
-	}
+    }
 }
