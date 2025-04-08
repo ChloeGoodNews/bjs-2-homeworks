@@ -16,7 +16,7 @@ function validateCount(number) {
 
 class Triangle {
 	constructor(ab, bc, ca) {
-		this.ab= ab;
+		this.ab = ab;
 		this.bc = bc;
 		this.ca = ca;
 
